@@ -1,0 +1,235 @@
+/* --- Reset Básico --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background: none !important; /* Esto evita que el degradado tape todo */
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    min-height: 100vh;
+    /* El fondo del body debe ser transparente para ver el video */
+    background: transparent !important; 
+}
+
+/* --- Variables de Diseño --- */
+:root {
+    --texto: #f3e8e8;
+    --blanco-glass: rgba(255, 255, 255, 0.301);
+    --blanco-borde: rgba(255, 255, 255, 0.842);
+    --sombra: rgba(0, 0, 0, 0.15);
+}
+
+/* --- 1. FONDO DE VIDEO --- */
+#bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Hace que el video cubra toda la pantalla sin deformarse */
+    z-index: -1000; /* Lo manda al fondo de todo */
+    filter: brightness(0.85); /* Oscurece el video un 15% para que se lea mejor el texto */
+}
+
+/* --- 2. HEADER TIPO CÁPSULA (Efecto Glass) --- */
+.header-capsule {
+    margin: 20px 20px 10px 20px;
+    padding: 10px 30px;
+    border-radius: 50px;
+    
+    /* Efecto Vidrio */
+    background: var(--blanco-glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--blanco-borde);
+    box-shadow: 0 4px 30px var(--sombra);
+}
+
+.menu-principal {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+}
+
+.logo a {
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--texto);
+    font-size: 1.5rem;
+    text-shadow: 0 2px 4px rgba(255,255,255,0.5); 
+}
+
+/* Botones del Header */
+.btn-pill {
+    padding: 10px 20px;
+    border-radius: 25px;
+    text-decoration: none;
+    background-color: rgba(255, 255, 255, 0.5);
+    color: var(--texto);
+    font-size: 0.9rem;
+    margin-left: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-pill:hover { background-color: rgba(255, 255, 255, 0.8); }
+
+.btn-pill.dark {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+}
+.btn-pill.dark:hover { background-color: rgba(0, 0, 0, 0.8); }
+
+/* --- 3. CONTENEDOR CENTRAL Y TARJETA GLASS --- */
+.login-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.login-card {
+    /* Efecto Glass */
+    background: rgba(255, 255, 255, 0.12) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    /* 1. BORDE BLANCO SUTIL */
+    border: 1.5px solid rgba(255, 255, 255, 0.4) !important; 
+    
+    border-radius: 40px;
+    padding: 40px;
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    
+    /* 2. LETRAS BLANCAS */
+    color: #ffffff !important; 
+}
+
+/* Forzar que todos los textos dentro de la tarjeta sean blancos */
+.login-card h1, 
+.login-card p, 
+.login-card label, 
+.login-card .alt-link {
+    color: #ffffff !important;
+}
+
+.login-card h1 {
+    font-size: 2.2rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+    color: #ffffff !important; 
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3); 
+}
+
+.input-pill {
+    width: 100%;
+    padding: 14px 20px;
+    margin-bottom: 12px;
+    border-radius: 50px;
+    
+    /* Borde y fondo semitransparente */
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    
+    color: white !important; /* Texto que escribe el usuario */
+    font-size: 1rem;
+}
+
+/* Color del texto de sugerencia (placeholder) */
+.input-pill::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.btn-pill-light, .btn-pill-dark {
+    padding: 12px 25px;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: 0.3s;
+    flex: 1; /* Para que midan lo mismo */
+}
+
+.btn-pill-light { 
+    background-color: rgba(255, 255, 255, 0.6); 
+    color: var(--texto);
+}
+.btn-pill-light:hover { background-color: rgba(255, 255, 255, 0.9); }
+
+.btn-pill-dark { 
+    background-color: #333; 
+    color: white; 
+}
+.btn-pill-dark:hover { background-color: #111; }
+
+/* --- Selector de Estudiante (Registro) --- */
+.selector-estudiante {
+    display: flex;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.selector-estudiante input[type="radio"] { display: none; }
+
+.selector-estudiante label {
+    flex: 1;
+    padding: 12px 10px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #444;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.selector-estudiante input:checked + label {
+    background-color: #333;
+    color: white;
+    border-color: #333;
+}
+
+/* Enlaces extra */
+.alt-link {
+    display: inline-block;
+    margin-top: 25px;
+    text-decoration: none;
+    color: #222;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 5px 15px;
+    background: rgba(255,255,255,0.3);
+    border-radius: 20px;
+    transition: 0.3s;
+}
+
+.alt-link:hover {
+    background: rgba(255,255,255,0.6);
+}
+
+/* Alertas PHP */
+.error, .success {
+    padding: 10px;
+    border-radius: 20px;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.error { background: rgba(255, 180, 180, 0.8); color: #900; }
+.success { background: rgba(180, 255, 180, 0.8); color: #060; }
